@@ -172,7 +172,7 @@ else:
     # -----------------------------
     # SUBABA: UNIDADES
     # -----------------------------
-    else: sub == "📦 Pacotes & Unidades":
+    elif: sub == "📦 Pacotes & Unidades":
         st.caption("Compare por unidade (ex.: cápsulas, fraldas, lâminas, sachês).")
 
         col1, col2 = st.columns(2)
