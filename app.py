@@ -70,7 +70,7 @@ if pagina == "⛽ Combustível":
 
         combustivel_usado = st.radio("Combustível usado", ["Etanol", "Gasolina"], horizontal=True, key="comb_usado")
 
-        if st.button("Calcular e usar no painel", use_container_width=True, key="btn_consumo"):
+        if st.button("Calcular", use_container_width=True, key="btn_consumo"):
             if km_rodados <= 0 or litros_usados <= 0:
                 st.error("Km e litros precisam ser maiores que zero.")
             else:
@@ -79,7 +79,7 @@ if pagina == "⛽ Combustível":
                 st.session_state["comb_real"] = combustivel_usado
 
                 st.success(f"Consumo salvo: **{km_por_l:.2f} km/L** (aplicado ao {combustivel_usado}).")
-                st.info("Agora volte acima e rode **Comparar combustível** para ver o resultado com seu consumo real.")
+                st.info("Agora volte acima, cole esse novo valor e rode **Comparar combustível** para ver o resultado com seu consumo real.")
 
 # ======================================================
 # PÁGINA: PRODUTOS
