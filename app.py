@@ -1,9 +1,4 @@
 import streamlit as st
-
-def brl(x: float) -> str:
-    s = f"{x:,.2f}"
-    s = s.replace(",", "X").replace(".", ",").replace("X", ".")
-    return f"R$ {s}"
     
 st.set_page_config(page_title="Vale Esse", page_icon="💸", layout="centered")
 
@@ -133,16 +128,6 @@ else:
             else:
                 ra = preco_a / va
                 rb = preco_b / vb
-    
-                c1, c2 = st.columns(2)
-                
-                with c1:
-                    st.metric("Produto A (R$/mL)", f"{ra:.6f}")
-                    st.caption(f"{brl(ra*100)} por 100 mL • {brl(ra*1000)} por 1 L")
-                
-                with c2:
-                    st.metric("Produto B (R$/mL)", f"{rb:.6f}")
-                    st.caption(f"{brl(rb*100)} por 100 mL • {brl(rb*1000)} por 1 L")
     
                 if ra < rb:
                     st.success("✅ Vale mais a pena: **Produto A**")
