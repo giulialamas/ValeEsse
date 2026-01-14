@@ -128,7 +128,17 @@ else:
             else:
                 ra = preco_a / va
                 rb = preco_b / vb
-    
+
+                c1, c2 = st.columns(2)
+                
+                with c1:
+                    st.metric("Produto A (R$/mL)", f"{ra:.6f}")
+                    st.caption(f"R$ {ra*100:.2f} por 100 mL • R$ {ra*1000:.2f} por 1 L")
+                
+                with c2:
+                    st.metric("Produto B (R$/mL)", f"{rb:.6f}")
+                    st.caption(f"R$ {rb*100:.2f} por 100 mL • R$ {rb*1000:.2f} por 1 L")
+                
                 if ra < rb:
                     st.success("✅ Vale mais a pena: **Produto A**")
                 elif rb < ra:
