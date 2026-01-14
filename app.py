@@ -70,7 +70,7 @@ if pagina == "⛽ Combustível":
 
         combustivel_usado = st.radio("Combustível usado", ["Etanol", "Gasolina"], horizontal=True, key="comb_usado")
 
-        if st.button("Calcular e usar no painel", use_container_width=True, key="btn_consumo"):
+        if st.button("Calcular", use_container_width=True, key="btn_consumo"):
             if km_rodados <= 0 or litros_usados <= 0:
                 st.error("Km e litros precisam ser maiores que zero.")
             else:
