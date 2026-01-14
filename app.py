@@ -109,7 +109,7 @@ else:
         col1, col2 = st.columns(2)
         with col1:
             st.markdown("### Produto A")
-            preco_a = st.number_input("Preço (R$)", 120.18, min_value=0.0, step=0.10, key="pa_vol")
+            preco_a = st.number_input("Preço (R$)", value=120.18, min_value=0.0, step=0.10, key="pa_vol")
             unidade_a = st.selectbox("Unidade", ["mL", "L", "m³"], key="ua_vol")
             vol_a = st.number_input(f"Volume ({unidade_a})", 200.0, min_value=0.0, key="va_vol")
 
