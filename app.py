@@ -1,5 +1,10 @@
 import streamlit as st
 
+def brl(x: float) -> str:
+    s = f"{x:,.2f}"
+    s = s.replace(",", "X").replace(".", ",").replace("X", ".")
+    return f"R$ {s}"
+    
 st.set_page_config(page_title="Vale Esse", page_icon="💸", layout="centered")
 
 st.title("💸 Vale Esse")
