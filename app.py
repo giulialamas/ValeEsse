@@ -6,7 +6,7 @@ st.title("💸 Vale Esse")
 st.caption("Compare o que realmente rende mais pelo custo real.")
 
 # =========================
-# Navegação mobile-friendly
+# Navegação (mobile-friendly)
 # =========================
 pagina = st.segmented_control(
     "Escolha",
@@ -20,26 +20,34 @@ pagina = st.segmented_control(
 if pagina == "⛽ Combustível":
     st.subheader("⛽ Etanol vs Gasolina")
 
-    # Consumos (podem ser atualizados pelo consumo medido abaixo)
-    consumo_real = st.session_state.get("consumo_real")
-    comb_real = st.session_state.get("comb_real")
+    # --- Inicializa consumos no session_state (1ª execução) ---
+    if "ce" not in st.session_state:
+        st.session_state["ce"] = 11.5  # etanol
+    if "cg" not in st.session_state:
+        st.session_state["cg"] = 15.0  # gasolina
+    if "pe" not in st.session_state:
+        st.session_state["pe"] = 4.55  # preço etanol
+    if "pg" not in st.session_state:
+        st.session_state["pg"] = 6.55  # preço gasolina
 
     col1, col2 = st.columns(2)
+
     with col1:
         st.markdown("### Etanol")
-        preco_e = st.number_input("Preço (R$/L)", value=4.55, min_value=0.0, step=0.05, key="pe")
-
-        valor_default_e = consumo_real if (consumo_real and comb_real == "Etanol") else 11.5
-        consumo_e = st.number_input("Consumo (km/L)", value=float(valor_default_e), min_value=0.1, step=0.1, key="ce")
+        st.number_input("Preço (R$/L)", min_value=0.0, step=0.05, key="pe")
+        st.number_input("Consumo (km/L)", min_value=0.1, step=0.1, key="ce")
 
     with col2:
         st.markdown("### Gasolina")
-        preco_g = st.number_input("Preço (R$/L)", value=6.55, min_value=0.0, step=0.05, key="pg")
-
-        valor_default_g = consumo_real if (consumo_real and comb_real == "Gasolina") else 15.0
-        consumo_g = st.number_input("Consumo (km/L)", value=float(valor_default_g), min_value=0.1, step=0.1, key="cg")
+        st.number_input("Preço (R$/L)", min_value=0.0, step=0.05, key="pg")
+        st.number_input("Consumo (km/L)", min_value=0.1, step=0.1, key="cg")
 
     if st.button("Comparar combustível", use_container_width=True):
+        preco_e = float(st.session_state["pe"])
+        consumo_e = float(st.session_state["ce"])
+        preco_g = float(st.session_state["pg"])
+        consumo_g = float(st.session_state["cg"])
+
         custo_km_e = preco_e / consumo_e
         custo_km_g = preco_g / consumo_g
 
@@ -60,26 +68,47 @@ if pagina == "⛽ Combustível":
             st.info("Empate: os dois custam igual por km.")
 
     # -----------------------------
-    # Mobile-friendly: expander no corpo
+    # Descobrir consumo (aplica automaticamente no painel)
     # -----------------------------
     with st.expander("🔎 Descubra o consumo ao completar o tanque", expanded=False):
-        st.caption("Informe km rodados desde o último abastecimento e litros para completar o tanque.")
+        st.caption("Informe km rodados desde o último abastecimento e os litros para completar o tanque.")
 
-        km_rodados = st.number_input("Quilometragem rodada (km)", value=300.0, min_value=0.0, step=10.0, key="km_rodados")
-        litros_usados = st.number_input("Litros abastecidos (L)", value=25.0, min_value=0.0, step=1.0, key="litros_usados")
+        km_rodados = st.number_input(
+            "Quilometragem rodada (km)",
+            value=300.0,
+            min_value=0.0,
+            step=10.0,
+            key="km_rodados",
+        )
+        litros_usados = st.number_input(
+            "Litros abastecidos (L)",
+            value=25.0,
+            min_value=0.0,
+            step=1.0,
+            key="litros_usados",
+        )
 
-        combustivel_usado = st.radio("Combustível usado", ["Etanol", "Gasolina"], horizontal=True, key="comb_usado")
+        combustivel_usado = st.radio(
+            "Combustível usado",
+            ["Etanol", "Gasolina"],
+            horizontal=True,
+            key="comb_usado",
+        )
 
-        if st.button("Calcular", use_container_width=True, key="btn_consumo"):
+        if st.button("Calcular e usar no painel", use_container_width=True, key="btn_consumo"):
             if km_rodados <= 0 or litros_usados <= 0:
                 st.error("Km e litros precisam ser maiores que zero.")
             else:
                 km_por_l = km_rodados / litros_usados
-                st.session_state["consumo_real"] = km_por_l
-                st.session_state["comb_real"] = combustivel_usado
 
-                st.success(f"Consumo salvo: **{km_por_l:.2f} km/L** (aplicado ao {combustivel_usado}).")
-                st.info("Agora volte acima e rode **Comparar combustível** para ver o resultado com seu consumo real.")
+                # Atualiza diretamente os campos principais (keys dos inputs)
+                if combustivel_usado == "Etanol":
+                    st.session_state["ce"] = float(km_por_l)
+                else:
+                    st.session_state["cg"] = float(km_por_l)
+
+                st.success(f"Consumo aplicado: **{km_por_l:.2f} km/L** para {combustivel_usado}.")
+                st.rerun()
 
 # ======================================================
 # PÁGINA: PRODUTOS
@@ -88,6 +117,7 @@ else:
     st.subheader("🧴 Produtos por volume (A vs B)")
 
     col1, col2 = st.columns(2)
+
     with col1:
         st.markdown("### Produto A")
         preco_a = st.number_input("Preço (R$)", value=120.18, min_value=0.0, step=0.10, key="pa")
@@ -135,7 +165,7 @@ else:
                 value=200.0 if unidade_vol == "mL" else 0.2,
                 min_value=0.0,
                 step=10.0 if unidade_vol == "mL" else 0.1,
-                key="qtd_vol"
+                key="qtd_vol",
             )
 
             if st.button("Calcular unitário", use_container_width=True, key="btn_unit_vol"):
@@ -155,4 +185,4 @@ else:
                 if unidades <= 0:
                     st.error("Unidades precisam ser maiores que zero.")
                 else:
-                    st.metric("R$/unidade", f"{(preco/unidades):.2f}")
+                    st.metric("R$/unidade", f"{(preco / unidades):.2f}")
