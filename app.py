@@ -156,12 +156,25 @@ if sub == "🧴 Líquidos & Cremes":
             preco_b = st.number_input("Preço B (R$)", 65.35, key="pb_un")
             un_b = st.number_input("Unidades B", 6, key="qb_un")
 
-        if st.button("Comparar (unidades)", use_container_width=True):
-            ra = preco_a / un_a
-            rb = preco_b / un_b
-            st.success("Vale mais a pena: **Produto A**" if ra < rb else "Vale mais a pena: **Produto B**")
-            st.metric("Produto A (R$/un)", f"{ra:.2f}")
-            st.metric("Produto B (R$/un)", f"{rb:.2f}")
+        if st.button("Comparar (unidades)", use_container_width=True, key="btn_cmp_un"):
+            if un_a <= 0 or un_b <= 0:
+                st.error("As quantidades (un) precisam ser maiores que zero.")
+            else:
+                rpu_a = preco_a / un_a
+                rpu_b = preco_b / un_b
+        
+                # 1️⃣ Decisão
+                if rpu_a < rpu_b:
+                    st.success("✅ Vale mais a pena: **Produto A**")
+                elif rpu_b < rpu_a:
+                    st.success("✅ Vale mais a pena: **Produto B**")
+                else:
+                    st.info("Empate: os dois rendem igual por unidade.")
+        
+                # 2️⃣ Valores
+                st.metric("Produto A (R$/un)", f"{rpu_a:.2f}")
+                st.metric("Produto B (R$/un)", f"{rpu_b:.2f}")
+
 
 
     # -----------------------------
@@ -181,11 +194,24 @@ if sub == "🧴 Líquidos & Cremes":
             un_b = st.number_input("Rolos B", 6, key="qb_m")
             m_b = st.number_input("Metros por rolo B", 20.0, key="mb_m")
 
-        if st.button("Comparar (metragem)", use_container_width=True):
-            ta = un_a * m_a
-            tb = un_b * m_b
-            ra = preco_a / ta
-            rb = preco_b / tb
-            st.success("Vale mais a pena: **Produto A**" if ra < rb else "Vale mais a pena: **Produto B**")
-            st.metric("Produto A (R$/m)", f"{ra:.3f}")
-            st.metric("Produto B (R$/m)", f"{rb:.3f}")
+if st.button("Comparar (metragem)", use_container_width=True, key="btn_cmp_m"):
+    total_a = unidades_a * metros_a
+    total_b = unidades_b * metros_b
+
+    if total_a <= 0 or total_b <= 0:
+        st.error("Metragens precisam ser maiores que zero.")
+    else:
+        custo_m_a = preco_a / total_a
+        custo_m_b = preco_b / total_b
+
+        # 1️⃣ Decisão
+        if custo_m_a < custo_m_b:
+            st.success("✅ Vale mais a pena: **Produto A**")
+        elif custo_m_b < custo_m_a:
+            st.success("✅ Vale mais a pena: **Produto B**")
+        else:
+            st.info("Empate: os dois custam igual por metro.")
+
+        # 2️⃣ Valores
+        st.metric("Produto A (R$/m)", f"{custo_m_a:.3f}")
+        st.metric("Produto B (R$/m)", f"{custo_m_b:.3f}")
