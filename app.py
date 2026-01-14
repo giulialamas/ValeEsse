@@ -97,52 +97,53 @@ else:
     # -----------------------------
     # SUBABA: LÍQUIDOS & CREMES
     # -----------------------------
-if sub == "🧴 Líquidos & Cremes":
-    st.caption("Compare por volume (mL, L ou m³).")
+    if sub == "🧴 Líquidos & Cremes":
+        st.caption("Compare por volume (mL, L ou m³).")
 
-    def to_ml(valor: float, unidade: str) -> float:
-        if unidade == "mL": return valor
-        if unidade == "L": return valor * 1000.0
-        if unidade == "m³": return valor * 1_000_000.0
-        return 0.0
+        def to_ml(valor: float, unidade: str) -> float:
+            if unidade == "mL":
+                return valor
+            if unidade == "L":
+                return valor * 1000.0
+            if unidade == "m³":
+                return valor * 1_000_000.0
+            return 0.0
 
-    col1, col2 = st.columns(2)
+        col1, col2 = st.columns(2)
 
-    with col1:
-        preco_a = st.number_input("Preço A (R$)", value=120.18, min_value=0.0, step=0.10, key="pa_vol")
-        unidade_a = st.selectbox("Unidade A", ["mL", "L", "m³"], index=0, key="ua_vol")
-        vol_a = st.number_input(f"Volume A ({unidade_a})", value=200.0, min_value=0.0, step=10.0, key="va_vol")
+        with col1:
+            preco_a = st.number_input("Preço A (R$)", value=120.18, min_value=0.0, step=0.10, key="pa_vol")
+            unidade_a = st.selectbox("Unidade A", ["mL", "L", "m³"], index=0, key="ua_vol")
+            vol_a = st.number_input(f"Volume A ({unidade_a})", value=200.0, min_value=0.0, step=10.0, key="va_vol")
 
-    with col2:
-        preco_b = st.number_input("Preço B (R$)", value=65.35, min_value=0.0, step=0.10, key="pb_vol")
-        unidade_b = st.selectbox("Unidade B", ["mL", "L", "m³"], index=0, key="ub_vol")
-        vol_b = st.number_input(f"Volume B ({unidade_b})", value=400.0, min_value=0.0, step=10.0, key="vb_vol")
+        with col2:
+            preco_b = st.number_input("Preço B (R$)", value=65.35, min_value=0.0, step=0.10, key="pb_vol")
+            unidade_b = st.selectbox("Unidade B", ["mL", "L", "m³"], index=0, key="ub_vol")
+            vol_b = st.number_input(f"Volume B ({unidade_b})", value=400.0, min_value=0.0, step=10.0, key="vb_vol")
 
-    if st.button("Comparar (volume)", use_container_width=True, key="btn_cmp_vol"):
-        va_ml = to_ml(vol_a, unidade_a)
-        vb_ml = to_ml(vol_b, unidade_b)
-    
-        if va_ml <= 0 or vb_ml <= 0:
-            st.error("Volumes precisam ser maiores que zero.")
-        else:
-            ra = preco_a / va_ml
-            rb = preco_b / vb_ml
-    
-            # PRIMEIRO: decisão
-            if ra < rb:
-                st.success("✅ Vale mais a pena: **Produto A**")
-            elif rb < ra:
-                st.success("✅ Vale mais a pena: **Produto B**")
+        if st.button("Comparar (volume)", use_container_width=True, key="btn_cmp_vol"):
+            va_ml = to_ml(vol_a, unidade_a)
+            vb_ml = to_ml(vol_b, unidade_b)
+
+            if va_ml <= 0 or vb_ml <= 0:
+                st.error("Volumes precisam ser maiores que zero.")
             else:
-                st.info("Empate: os dois rendem igual por volume.")
-    
-            # DEPOIS: valores
-            st.metric("Produto A (R$/mL)", f"{ra:.6f}")
-            st.metric("Produto B (R$/mL)", f"{rb:.6f}")
-    
-            st.caption(f"R\\$ {ra*100:.2f} por 100 mL • R\\$ {ra*1000:.2f} por 1 L")
-            st.caption(f"R\\$ {rb*100:.2f} por 100 mL • R\\$ {rb*1000:.2f} por 1 L")
+                ra = preco_a / va_ml
+                rb = preco_b / vb_ml
 
+                # 1️⃣ Decisão
+                if ra < rb:
+                    st.success("✅ Vale mais a pena: **Produto A**")
+                elif rb < ra:
+                    st.success("✅ Vale mais a pena: **Produto B**")
+                else:
+                    st.info("Empate: os dois rendem igual por volume.")
+
+                # 2️⃣ Valores
+                st.metric("Produto A (R$/mL)", f"{ra:.6f}")
+                st.metric("Produto B (R$/mL)", f"{rb:.6f}")
+                st.caption(f"R\\$ {ra*100:.2f} por 100 mL • R\\$ {ra*1000:.2f} por 1 L")
+                st.caption(f"R\\$ {rb*100:.2f} por 100 mL • R\\$ {rb*1000:.2f} por 1 L")
 
     # -----------------------------
     # SUBABA: PACOTES & UNIDADES
@@ -152,12 +153,12 @@ if sub == "🧴 Líquidos & Cremes":
 
         col1, col2 = st.columns(2)
         with col1:
-            preco_a = st.number_input("Preço A (R$)", 120.18, key="pa_un")
-            un_a = st.number_input("Unidades A", 12, key="qa_un")
+            preco_a = st.number_input("Preço A (R$)", value=32.99, min_value=0.0, step=0.10, key="pa_un")
+            un_a = st.number_input("Unidades A", value=8.0, min_value=0.0, step=1.0, key="qa_un")
 
         with col2:
-            preco_b = st.number_input("Preço B (R$)", 65.35, key="pb_un")
-            un_b = st.number_input("Unidades B", 6, key="qb_un")
+            preco_b = st.number_input("Preço B (R$)", value=27.90, min_value=0.0, step=0.10, key="pb_un")
+            un_b = st.number_input("Unidades B", value=6.0, min_value=0.0, step=1.0, key="qb_un")
 
         if st.button("Comparar (unidades)", use_container_width=True, key="btn_cmp_un"):
             if un_a <= 0 or un_b <= 0:
@@ -165,7 +166,7 @@ if sub == "🧴 Líquidos & Cremes":
             else:
                 rpu_a = preco_a / un_a
                 rpu_b = preco_b / un_b
-        
+
                 # 1️⃣ Decisão
                 if rpu_a < rpu_b:
                     st.success("✅ Vale mais a pena: **Produto A**")
@@ -173,7 +174,7 @@ if sub == "🧴 Líquidos & Cremes":
                     st.success("✅ Vale mais a pena: **Produto B**")
                 else:
                     st.info("Empate: os dois rendem igual por unidade.")
-        
+
                 # 2️⃣ Valores
                 st.metric("Produto A (R$/un)", f"{rpu_a:.2f}")
                 st.metric("Produto B (R$/un)", f"{rpu_b:.2f}")
@@ -182,29 +183,29 @@ if sub == "🧴 Líquidos & Cremes":
     # SUBABA: PAPÉIS & ROLOS
     # -----------------------------
     elif sub == "🧻 Papéis & Rolos":
-        st.caption("Compare por metragem.")
+        st.caption("Compare por metragem (papel higiênico, papel toalha, filme, alumínio).")
 
         col1, col2 = st.columns(2)
         with col1:
-            preco_a = st.number_input("Preço A (R$)", 120.18, key="pa_m")
-            un_a = st.number_input("Rolos A", 12, key="qa_m")
-            m_a = st.number_input("Metros por rolo A", 30.0, key="ma_m")
+            preco_a = st.number_input("Preço A (R$)", value=66.22, min_value=0.0, step=0.10, key="pa_m")
+            rolos_a = st.number_input("Rolos A", value=20.0, min_value=0.0, step=1.0, key="qa_m")
+            metros_a = st.number_input("Metros por rolo A (m)", value=50.0, min_value=0.0, step=1.0, key="ma_m")
 
         with col2:
-            preco_b = st.number_input("Preço B (R$)", 65.35, key="pb_m")
-            un_b = st.number_input("Rolos B", 6, key="qb_m")
-            m_b = st.number_input("Metros por rolo B", 20.0, key="mb_m")
+            preco_b = st.number_input("Preço B (R$)", value=55.98, min_value=0.0, step=0.10, key="pb_m")
+            rolos_b = st.number_input("Rolos B", value=24.0, min_value=0.0, step=1.0, key="qb_m")
+            metros_b = st.number_input("Metros por rolo B (m)", value=20.0, min_value=0.0, step=1.0, key="mb_m")
 
         if st.button("Comparar (metragem)", use_container_width=True, key="btn_cmp_m"):
-            total_a = unidades_a * metros_a
-            total_b = unidades_b * metros_b
-        
+            total_a = rolos_a * metros_a
+            total_b = rolos_b * metros_b
+
             if total_a <= 0 or total_b <= 0:
                 st.error("Metragens precisam ser maiores que zero.")
             else:
                 custo_m_a = preco_a / total_a
                 custo_m_b = preco_b / total_b
-        
+
                 # 1️⃣ Decisão
                 if custo_m_a < custo_m_b:
                     st.success("✅ Vale mais a pena: **Produto A**")
@@ -212,7 +213,7 @@ if sub == "🧴 Líquidos & Cremes":
                     st.success("✅ Vale mais a pena: **Produto B**")
                 else:
                     st.info("Empate: os dois custam igual por metro.")
-        
+
                 # 2️⃣ Valores
                 st.metric("Produto A (R$/m)", f"{custo_m_a:.3f}")
                 st.metric("Produto B (R$/m)", f"{custo_m_b:.3f}")
