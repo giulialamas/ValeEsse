@@ -2,6 +2,36 @@ import streamlit as st
     
 st.set_page_config(page_title="Vale Esse", page_icon="💸", layout="centered")
 
+st.markdown("""
+<script>
+const root = window.parent.document.documentElement;
+const theme = root.getAttribute("data-theme");
+document.body.setAttribute("data-theme", theme || "light");
+</script>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+.vale-box{
+  background: rgba(0,0,0,0.04);
+  color: #1f2328;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin: 10px 0 14px 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+/* Dark real */
+body[data-theme="dark"] .vale-box{
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.92);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+</style>
+""", unsafe_allow_html=True)
+
 st.title("💸 Vale Esse")
 st.caption("Compare o que realmente rende mais pelo custo real.")
 
@@ -10,17 +40,8 @@ bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
 bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
 fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
 
-st.markdown(f"""
-<div style="
-    background:{bg};
-    border:1px solid {bd};
-    color:{fg};
-    padding:14px 16px;
-    border-radius:14px;
-    margin:10px 0 14px 0;
-    font-size:15px;
-    line-height:1.45;
-">
+st.markdown("""
+<div class="vale-box">
 <b>💡 Sobre o Vale Esse</b><br>
 O Vale Esse compara produtos e combustíveis para mostrar <b>qual opção realmente rende mais</b> no dia a dia.<br><br>
 Você informa os dados dos itens que quer comparar e o app calcula o <b>custo real por uso</b> (por km, por volume, por unidade ou por metro).<br>
@@ -44,17 +65,8 @@ pagina = st.segmented_control(
 if pagina == "⛽ Combustível":
     st.subheader("⛽ Etanol vs Gasolina")
     
-    st.markdown(f"""
-    <div style="
-        background:{bg};
-        border:1px solid {bd};
-        color:{fg};
-        padding:14px 16px;
-        border-radius:14px;
-        margin:10px 0 14px 0;
-        font-size:15px;
-        line-height:1.45;
-    ">
+    st.markdown("""
+    <div class="vale-box">
     <b>ℹ️ Como usar</b><br>
     Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
     Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais do seu carro ou do posto.
@@ -129,14 +141,13 @@ if pagina == "⛽ Combustível":
 else:
     st.subheader("🛒 Produtos")
 
-    vale_box(
-        "Como usar",
-        """
-        <b>Produto A</b> e <b>Produto B</b> são quaisquer itens que você queira comparar.<br>
-        Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais.
-        """,
-        icon="🛒"
-    )
+    st.markdown("""
+    <div class="vale-box">
+    <b>ℹ️ Como usar</b><br>
+    <b>Produto A</b> e <b>Produto B</b> são quaisquer itens que você queira comparar.<br>
+    Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais.
+    </div>
+    """, unsafe_allow_html=True)
 
     sub = st.segmented_control(
         "Tipo de produto",
