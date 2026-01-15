@@ -103,11 +103,11 @@ else:
         col1, col2 = st.columns(2)
         with col1:
             preco_a = st.number_input("Preço A (R$)", value=32.99, min_value=0.0, step=0.10, key="pa_un")
-            un_a = st.number_input("Unidades A", value=8.0, min_value=0.0, step=1.0, format="%d", key="qa_un")
+            un_a = st.number_input("Unidades A", value=8, min_value=0, step=1, format="%d", key="qa_un")
 
         with col2:
             preco_b = st.number_input("Preço B (R$)", value=27.90, min_value=0.0, step=0.10, key="pb_un")
-            un_b = st.number_input("Unidades B", value=6.0, min_value=0.0, step=1.0, format="%d", key="qb_un")
+            un_b = st.number_input("Unidades B", value=6, min_value=0, step=1, format="%d", key="qb_un")
 
         if st.button("Comparar (unidades)", use_container_width=True, key="btn_cmp_un"):
             if un_a <= 0 or un_b <= 0:
@@ -149,13 +149,13 @@ else:
             st.markdown("### Produto A")
             preco_a = st.number_input("Preço A (R$)", value=120.18, min_value=0.0, step=0.10, key="pa_vol")
             unidade_a = st.selectbox("Unidade A", ["mL", "L", "m³"], index=0, key="ua_vol")
-            vol_a = st.number_input(f"Volume A ({unidade_a})", value=400.0, min_value=0.0, step=10.0, format="%d", key="va_vol")
+            vol_a = st.number_input(f"Volume A ({unidade_a})", value=400, min_value=0, step=10, format="%d", key="va_vol")
 
         with col2:
             st.markdown("### Produto B")
             preco_b = st.number_input("Preço B (R$)", value=65.35, min_value=0.0, step=0.10, key="pb_vol")
             unidade_b = st.selectbox("Unidade B", ["mL", "L", "m³"], index=0, key="ub_vol")
-            vol_b = st.number_input(f"Volume B ({unidade_b})", value=200.0, min_value=0.0, step=10.0, format="%d", key="vb_vol")
+            vol_b = st.number_input(f"Volume B ({unidade_b})", value=200, min_value=0, step=10, format="%d", key="vb_vol")
 
         if st.button("Comparar (volume)", use_container_width=True, key="btn_cmp_vol"):
             va_ml = to_ml(vol_a, unidade_a)
@@ -191,13 +191,13 @@ else:
         col1, col2 = st.columns(2)
         with col1:
             preco_a = st.number_input("Preço A (R$)", value=66.22, min_value=0.0, step=0.10, key="pa_m")
-            rolos_a = st.number_input("Rolos A", value=20.0, min_value=0.0, step=1.0, format="%d", key="qa_m")
-            metros_a = st.number_input("Metros por rolo A (m)", value=50.0, min_value=0.0, step=1.0, format="%d", key="ma_m")
+            rolos_a = st.number_input("Rolos A", value=20, min_value=0, step=1, format="%d", key="qa_m")
+            metros_a = st.number_input("Metros por rolo A (m)", value=50, min_value=0, step=1, format="%d", key="ma_m")
 
         with col2:
             preco_b = st.number_input("Preço B (R$)", value=55.98, min_value=0.0, step=0.10, key="pb_m")
-            rolos_b = st.number_input("Rolos B", value=24.0, min_value=0.0, step=1.0, format="%d", key="qb_m")
-            metros_b = st.number_input("Metros por rolo B (m)", value=20.0, min_value=0.0, step=1.0, format="%d", key="mb_m")
+            rolos_b = st.number_input("Rolos B", value=24, min_value=0, step=1, format="%d", key="qb_m")
+            metros_b = st.number_input("Metros por rolo B (m)", value=20, min_value=0, step=1, format="%d", key="mb_m")
 
         if st.button("Comparar (metragem)", use_container_width=True, key="btn_cmp_m"):
             total_a = rolos_a * metros_a
