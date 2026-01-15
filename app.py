@@ -22,9 +22,9 @@ if pagina == "⛽ Combustível":
     
     is_dark = st.get_option("theme.base") == "dark"
     
-    bg = "#1f1f1f" if is_dark else "#F7F7F7"
-    fg = "#f1f1f1" if is_dark else "#111111"
-    bd = "#333333" if is_dark else "#E0E0E0"
+    bg = "#242424" if is_dark else "#F3F4F6"
+    fg = "#E6E6E6" if is_dark else "#2B2B2B"
+    bd = "#3A3A3A" if is_dark else "#DADDE1"
     
     st.markdown(f"""
     <div style="
@@ -35,7 +35,7 @@ if pagina == "⛽ Combustível":
         border-radius:12px;
         margin-bottom:14px;
         font-size:15px;
-        line-height:1.4;
+        line-height:1.45;
     ">
     <b>ℹ️ Como usar</b><br>
     Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
