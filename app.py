@@ -35,6 +35,29 @@ st.markdown("""
 
 st.title("💸 Vale Esse")
 st.caption("Compare o que realmente rende mais pelo custo real.")
+is_dark = st.get_option("theme.base") == "dark"
+bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
+bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
+fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
+
+st.markdown(f"""
+<div style="
+    background:{bg};
+    border:1px solid {bd};
+    color:{fg};
+    padding:14px 16px;
+    border-radius:14px;
+    margin:10px 0 14px 0;
+    font-size:15px;
+    line-height:1.45;
+">
+<b>💡 O que é o Vale Esse?</b><br>
+O <b>Vale Esse</b> te ajuda a descobrir <b>qual opção realmente rende mais</b> pelo custo real — seja no posto de combustível ou no supermercado.<br><br>
+Aqui você compara produtos de tamanhos diferentes, embalagens diferentes ou combustíveis com consumos diferentes, e o app calcula automaticamente o <b>custo real por uso</b> (por km, por mL, por unidade ou por metro).<br><br>
+<b>Os valores exibidos são apenas exemplos.</b> Substitua pelos dados reais do que você quer comprar para saber, de forma clara, <b>qual vale mais a pena</b>.
+</div>
+""", unsafe_allow_html=True)
+
 
 # =========================
 # Navegação mobile-friendly
