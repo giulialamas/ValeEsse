@@ -42,14 +42,7 @@ if pagina == "⛽ Combustível":
     if st.button("Comparar combustível", use_container_width=True):
         custo_km_e = preco_e / consumo_e
         custo_km_g = preco_g / consumo_g
-
-        st.markdown("### Custo real por km")
-        c1, c2 = st.columns(2)
-        with c1:
-            st.metric("Etanol (R$/km)", f"{custo_km_e:.3f}")
-        with c2:
-            st.metric("Gasolina (R$/km)", f"{custo_km_g:.3f}")
-
+        
         if custo_km_e < custo_km_g:
             economia = (custo_km_g - custo_km_e) / custo_km_g * 100
             st.success(f"✅ Vale mais a pena: **Etanol** ({economia:.1f}% mais barato por km)")
@@ -58,6 +51,14 @@ if pagina == "⛽ Combustível":
             st.success(f"✅ Vale mais a pena: **Gasolina** ({economia:.1f}% mais barato por km)")
         else:
             st.info("Empate: os dois custam igual por km.")
+        
+        st.markdown("### Custo real por km")
+        c1, c2 = st.columns(2)
+        with c1:
+            st.metric("Etanol (R$/km)", f"{custo_km_e:.3f}")
+        with c2:
+            st.metric("Gasolina (R$/km)", f"{custo_km_g:.3f}")
+
 
     # -----------------------------
     # Mobile-friendly: expander no corpo
