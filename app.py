@@ -2,61 +2,41 @@ import streamlit as st
     
 st.set_page_config(page_title="Vale Esse", page_icon="💸", layout="centered")
 
-st.markdown("""
-<style>
-/* Box de aviso (suave no dark e no light) */
-.vale-note{
-  background: #F2F4F7 !important;
-  color: #1f2328 !important;
-  border: 1px solid rgba(0,0,0,0.10) !important;
-  border-radius: 14px !important;
-  padding: 14px 16px !important;
-  margin: 10px 0 14px 0 !important;
-  font-size: 15px !important;
-  line-height: 1.45 !important;
-}
+def vale_box(title: str, body_html: str, icon: str = "ℹ️"):
+    is_dark = st.get_option("theme.base") == "dark"
 
-/* Tema escuro do Streamlit Cloud costuma usar data-theme="dark" */
-[data-theme="dark"] .vale-note{
-  background: rgba(255,255,255,0.06) !important;   /* “vidro” bem suave */
-  color: rgba(255,255,255,0.92) !important;
-  border: 1px solid rgba(255,255,255,0.10) !important;
-}
+    # Tom “vidro” único (igual à Sobre o Vale Esse)
+    bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
+    bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
+    fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
 
-/* fallback (algumas versões usam .stApp como raiz) */
-.stApp[data-theme="dark"] .vale-note{
-  background: rgba(255,255,255,0.06) !important;
-  color: rgba(255,255,255,0.92) !important;
-  border: 1px solid rgba(255,255,255,0.10) !important;
-}
-</style>
-""", unsafe_allow_html=True)
+    st.markdown(f"""
+    <div style="
+        background:{bg};
+        border:1px solid {bd};
+        color:{fg};
+        padding:14px 16px;
+        border-radius:14px;
+        margin:10px 0 14px 0;
+        font-size:15px;
+        line-height:1.45;
+    ">
+      <b>{icon} {title}</b><br>
+      {body_html}
+    </div>
+    """, unsafe_allow_html=True)
 
 
 st.title("💸 Vale Esse")
 st.caption("Compare o que realmente rende mais pelo custo real.")
-is_dark = st.get_option("theme.base") == "dark"
-bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
-bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
-fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
-
-st.markdown(f"""
-<div style="
-    background:{bg};
-    border:1px solid {bd};
-    color:{fg};
-    padding:14px 16px;
-    border-radius:14px;
-    margin:10px 0 14px 0;
-    font-size:15px;
-    line-height:1.45;
-">
-<b>💡 Sobre o Vale Esse</b><br>
-O <b>Vale Esse</b> compara produtos e combustíveis para mostrar <b>qual opção realmente rende mais</b> no dia a dia.<br><br>
-Você informa os dados dos itens que quer comparar e o app calcula o <b>custo real por uso</b> (por km, por volume, por unidade ou por metro).<br>
-Os valores que aparecem inicialmente são apenas <b>exemplos</b> — substitua pelos dados reais.
-</div>
-""", unsafe_allow_html=True)
+vale_box(
+    "Sobre o Vale Esse",
+    """
+    O <b>Vale Esse</b> compara produtos e combustíveis para mostrar <b>qual opção rende mais</b> no dia a dia.<br><br>
+    Os valores iniciais são <b>exemplos</b> — substitua pelos dados reais.
+    """,
+    icon="💡"
+)
 
 
 
@@ -75,13 +55,14 @@ pagina = st.segmented_control(
 if pagina == "⛽ Combustível":
     st.subheader("⛽ Etanol vs Gasolina")
     
-    st.markdown("""
-    <div class="vale-note">
-    <b>ℹ️ Como usar</b><br>
-    Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
-    Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais do seu carro ou do posto onde você abastece.
-    </div>
-    """, unsafe_allow_html=True)
+    vale_box(
+        "Como usar",
+        """
+        Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
+        Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais do seu carro ou do posto.
+        """,
+        icon="⛽"
+    )
     
     # Consumos (podem ser atualizados pelo consumo medido abaixo)
     consumo_real = st.session_state.get("consumo_real")
@@ -151,14 +132,14 @@ if pagina == "⛽ Combustível":
 else:
     st.subheader("🛒 Produtos")
 
-    st.markdown("""
-    <div class="vale-note">
-    <b>ℹ️ Como usar</b><br>
-    Os campos <b>Produto A</b> e <b>Produto B</b> representam <b>quaisquer dois produtos que você queira comparar</b>.<br>
-    Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais dos produtos que você está avaliando.
-    </div>
-    """, unsafe_allow_html=True)
-
+    vale_box(
+        "Como usar",
+        """
+        <b>Produto A</b> e <b>Produto B</b> são quaisquer itens que você queira comparar.<br>
+        Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais.
+        """,
+        icon="🛒"
+    )
 
     sub = st.segmented_control(
         "Tipo de produto",
