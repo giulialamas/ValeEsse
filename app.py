@@ -65,6 +65,8 @@ if pagina == "⛽ Combustível":
         line-height:1.45;
     ">
     <b>ℹ️ Como usar</b><br>
+    <div style="margin-top:8px;">
+    </div>
     Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
     <div style="margin-top:8px;">
     Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais do seu carro ou do posto onde você abastece.
@@ -159,7 +161,10 @@ else:
         line-height:1.45;
     ">
     <b>ℹ️ Como usar</b><br>
+    <div style="margin-top:8px;">
     <b>Produto A</b> e <b>Produto B</b> são quaisquer itens que você queira comparar.<br>
+    </div>
+    <div style="margin-top:8px;">
     Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais.
     </div>
     """, unsafe_allow_html=True)
