@@ -2,69 +2,28 @@ import streamlit as st
     
 st.set_page_config(page_title="Vale Esse", page_icon="💸", layout="centered")
 
-st.markdown("""
-<script>
-(function () {
-  try {
-    const root = window.parent.document.documentElement; // <html> do app (iframe parent)
-    const theme = root.getAttribute("data-theme") || "light";
-    document.body.setAttribute("data-theme", theme);
-  } catch (e) {
-    // fallback silencioso
-  }
-})();
-</script>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<style>
-/* ====== estilo base (light) ====== */
-.vale-box{
-  background: rgba(0,0,0,0.04);
-  color: #1f2328;
-  border: 1px solid rgba(0,0,0,0.10);
-  border-radius: 14px;
-  padding: 14px 16px;
-  margin: 10px 0 14px 0;
-  font-size: 15px;
-  line-height: 1.45;
-}
-
-/* ====== dark (vários fallbacks) ====== */
-html[data-theme="dark"] .vale-box,
-body[data-theme="dark"] .vale-box,
-[data-theme="dark"] .vale-box,
-.stApp[data-theme="dark"] .vale-box{
-  background: rgba(255,255,255,0.12);      /* mais visível no dark */
-  color: rgba(255,255,255,0.96);
-  border: 1px solid rgba(255,255,255,0.18);
-}
-
-html[data-theme="dark"] .vale-box b,
-body[data-theme="dark"] .vale-box b,
-[data-theme="dark"] .vale-box b,
-.stApp[data-theme="dark"] .vale-box b{
-  color: rgba(255,255,255,0.98);
-}
-</style>
-""", unsafe_allow_html=True)
-
-
-
-st.title("💸 Vale Esse")
-st.caption("Compare o que realmente rende mais pelo custo real.")
-
 is_dark = st.get_option("theme.base") == "dark"
 bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
 bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
 fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
 
-st.markdown("""
-<div class="vale-box">
+st.title("💸 Vale Esse")
+st.caption("Compare o que realmente rende mais pelo custo real.")
+
+st.markdown(f"""
+<div style="
+    background:{bg};
+    border:1px solid {bd};
+    color:{fg};
+    padding:14px 16px;
+    border-radius:14px;
+    margin:10px 0 14px 0;
+    font-size:15px;
+    line-height:1.45;
+">
 <b>💡 Sobre o Vale Esse</b><br>
-O Vale Esse compara produtos e combustíveis para mostrar <b>qual opção realmente rende mais</b> no dia a dia.<br><br>
-Você informa os dados dos itens que quer comparar e o app calcula o <b>custo real por uso</b> (por km, por volume, por unidade ou por metro).<br>
-Os valores que aparecem inicialmente são apenas <b>exemplos</b> — substitua pelos dados reais.
+O Vale Esse compara produtos e combustíveis para mostrar <b>qual opção rende mais</b> no dia a dia.<br>
+Os valores iniciais são <b>exemplos</b> — substitua pelos dados reais.
 </div>
 """, unsafe_allow_html=True)
 
@@ -84,11 +43,20 @@ pagina = st.segmented_control(
 if pagina == "⛽ Combustível":
     st.subheader("⛽ Etanol vs Gasolina")
     
-    st.markdown("""
-    <div class="vale-box">
+    st.markdown(f"""
+    <div style="
+        background:{bg};
+        border:1px solid {bd};
+        color:{fg};
+        padding:14px 16px;
+        border-radius:14px;
+        margin:10px 0 14px 0;
+        font-size:15px;
+        line-height:1.45;
+    ">
     <b>ℹ️ Como usar</b><br>
     Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
-    Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais do seu carro ou do posto.
+    Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais.
     </div>
     """, unsafe_allow_html=True)
     
@@ -160,8 +128,17 @@ if pagina == "⛽ Combustível":
 else:
     st.subheader("🛒 Produtos")
 
-    st.markdown("""
-    <div class="vale-box">
+    st.markdown(f"""
+    <div style="
+        background:{bg};
+        border:1px solid {bd};
+        color:{fg};
+        padding:14px 16px;
+        border-radius:14px;
+        margin:10px 0 14px 0;
+        font-size:15px;
+        line-height:1.45;
+    ">
     <b>ℹ️ Como usar</b><br>
     <b>Produto A</b> e <b>Produto B</b> são quaisquer itens que você queira comparar.<br>
     Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais.
