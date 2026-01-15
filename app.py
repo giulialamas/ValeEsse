@@ -102,10 +102,12 @@ else:
 
         col1, col2 = st.columns(2)
         with col1:
+            st.markdown("### Produto A")
             preco_a = st.number_input("Preço A (R$)", value=32.99, min_value=0.0, step=0.10, key="pa_un")
             un_a = st.number_input("Unidades A", value=8, min_value=0, step=1, format="%d", key="qa_un")
 
         with col2:
+            st.markdown("### Produto B")
             preco_b = st.number_input("Preço B (R$)", value=27.90, min_value=0.0, step=0.10, key="pb_un")
             un_b = st.number_input("Unidades B", value=6, min_value=0, step=1, format="%d", key="qb_un")
 
@@ -190,11 +192,13 @@ else:
 
         col1, col2 = st.columns(2)
         with col1:
+            st.markdown("### Produto A")
             preco_a = st.number_input("Preço A (R$)", value=66.22, min_value=0.0, step=0.10, key="pa_m")
             rolos_a = st.number_input("Rolos A", value=20, min_value=0, step=1, format="%d", key="qa_m")
             metros_a = st.number_input("Metros por rolo A (m)", value=50, min_value=0, step=1, format="%d", key="ma_m")
 
         with col2:
+            st.markdown("### Produto B")
             preco_b = st.number_input("Preço B (R$)", value=55.98, min_value=0.0, step=0.10, key="pb_m")
             rolos_b = st.number_input("Rolos B", value=24, min_value=0, step=1, format="%d", key="qb_m")
             metros_b = st.number_input("Metros por rolo B (m)", value=20, min_value=0, step=1, format="%d", key="mb_m")
