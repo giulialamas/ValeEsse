@@ -51,12 +51,13 @@ st.markdown(f"""
     font-size:15px;
     line-height:1.45;
 ">
-<b>💡 O que é o Vale Esse?</b><br>
-O <b>Vale Esse</b> te ajuda a descobrir <b>qual opção realmente rende mais</b> pelo custo real — seja no posto de combustível ou no supermercado.<br><br>
-Aqui você compara produtos de tamanhos diferentes, embalagens diferentes ou combustíveis com consumos diferentes, e o app calcula automaticamente o <b>custo real por uso</b> (por km, por mL, por unidade ou por metro).<br><br>
-<b>Os valores exibidos são apenas exemplos.</b> Substitua pelos dados reais do que você quer comprar para saber, de forma clara, <b>qual vale mais a pena</b>.
+<b>💡 Sobre o Vale Esse</b><br>
+O Vale Esse compara produtos e combustíveis para mostrar <b>qual opção realmente rende mais</b> no dia a dia.<br><br>
+Você informa os dados dos itens que quer comparar e o app calcula o <b>custo real por uso</b> (por km, por volume, por unidade ou por metro).<br>
+Os valores que aparecem inicialmente são apenas <b>exemplos</b> — substitua pelos dados reais.
 </div>
 """, unsafe_allow_html=True)
+
 
 
 # =========================
