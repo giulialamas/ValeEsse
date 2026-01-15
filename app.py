@@ -24,10 +24,9 @@ st.markdown(f"""
 ">
 <b>💡 Sobre o Vale Esse</b><br>
 O Vale Esse compara produtos e combustíveis para mostrar <b>qual opção rende mais</b> no dia a dia.<br>
-Compare produtos de tamanhos diferentes, embalagens diferentes ou combustíveis com consumos diferentes e veja o custo real por uso antes de comprar.
+Compare produtos e combustíveis de tamanhos ou consumos diferentes e descubra, de forma simples, qual opção realmente rende mais no seu dia a dia.
 </div>
 """, unsafe_allow_html=True)
-
 
 # =========================
 # Navegação mobile-friendly
