@@ -89,8 +89,24 @@ else:
     st.subheader("🛒 Produtos")
 
     st.markdown("""
-    <div style="
+    <style>
+    @media (prefers-color-scheme: dark) {
+      .vale-box {
+        background-color:#1f1f1f;
+        color:#f1f1f1;
+        border:1px solid #333333;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      .vale-box {
         background-color:#F7F7F7;
+        color:#111111;
+        border:1px solid #E0E0E0;
+      }
+    }
+    </style>
+    
+    <div class="vale-box" style="
         padding:14px 16px;
         border-radius:12px;
         margin-bottom:14px;
@@ -99,9 +115,10 @@ else:
     ">
     <b>ℹ️ Como usar</b><br>
     Os campos <b>Produto A</b> e <b>Produto B</b> representam <b>quaisquer dois produtos que você queira comparar</b>.<br>
-    Os valores que aparecem inicialmente são <b>apenas exemplos</b> — substitua pelos preços, volumes, quantidades ou metragem dos produtos reais que você está avaliando.
+    Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais dos produtos que você está avaliando.
     </div>
     """, unsafe_allow_html=True)
+
 
     sub = st.segmented_control(
         "Tipo de produto",
