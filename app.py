@@ -199,13 +199,13 @@ else:
             st.markdown("### Produto A")
             preco_a = st.number_input("Preço A (R$)", value=120.18, min_value=0.0, step=0.10, key="pa_vol")
             unidade_a = st.selectbox("Unidade A", ["mL", "L", "m³"], index=0, key="ua_vol")
-            vol_a = st.number_input(f"Volume A ({unidade_a})", value=400, min_value=0, step=10, format="%d", key="va_vol")
+            vol_a = st.number_input(f"Volume A ({unidade_a})", value=400, min_value=0, step=50, format="%d", key="va_vol")
 
         with col2:
             st.markdown("### Produto B")
             preco_b = st.number_input("Preço B (R$)", value=65.35, min_value=0.0, step=0.10, key="pb_vol")
             unidade_b = st.selectbox("Unidade B", ["mL", "L", "m³"], index=0, key="ub_vol")
-            vol_b = st.number_input(f"Volume B ({unidade_b})", value=200, min_value=0, step=10, format="%d", key="vb_vol")
+            vol_b = st.number_input(f"Volume B ({unidade_b})", value=200, min_value=0, step=50, format="%d", key="vb_vol")
 
         if st.button("Comparar (volume)", use_container_width=True, key="btn_cmp_vol"):
             va_ml = to_ml(vol_a, unidade_a)
