@@ -52,7 +52,7 @@ st.markdown(f"""
     line-height:1.45;
 ">
 <b>💡 Sobre o Vale Esse</b><br>
-O <b>Vale Esse<b> compara produtos e combustíveis para mostrar <b>qual opção realmente rende mais</b> no dia a dia.<br><br>
+O <b>Vale Esse</b> compara produtos e combustíveis para mostrar <b>qual opção realmente rende mais</b> no dia a dia.<br><br>
 Você informa os dados dos itens que quer comparar e o app calcula o <b>custo real por uso</b> (por km, por volume, por unidade ou por metro).<br>
 Os valores que aparecem inicialmente são apenas <b>exemplos</b> — substitua pelos dados reais.
 </div>
