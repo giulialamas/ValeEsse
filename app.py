@@ -88,25 +88,17 @@ if pagina == "⛽ Combustível":
 else:
     st.subheader("🛒 Produtos")
 
-    st.markdown("""
-    <style>
-    @media (prefers-color-scheme: dark) {
-      .vale-box {
-        background-color:#1f1f1f;
-        color:#f1f1f1;
-        border:1px solid #333333;
-      }
-    }
-    @media (prefers-color-scheme: light) {
-      .vale-box {
-        background-color:#F7F7F7;
-        color:#111111;
-        border:1px solid #E0E0E0;
-      }
-    }
-    </style>
+    is_dark = st.get_option("theme.base") == "dark"
     
-    <div class="vale-box" style="
+    bg = "#1f1f1f" if is_dark else "#F7F7F7"
+    fg = "#f1f1f1" if is_dark else "#111111"
+    bd = "#333333" if is_dark else "#E0E0E0"
+    
+    st.markdown(f"""
+    <div style="
+        background-color:{bg};
+        color:{fg};
+        border:1px solid {bd};
         padding:14px 16px;
         border-radius:12px;
         margin-bottom:14px;
