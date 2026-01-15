@@ -88,6 +88,21 @@ if pagina == "⛽ Combustível":
 else:
     st.subheader("🛒 Produtos")
 
+    st.markdown("""
+    <div style="
+        background-color:#F7F7F7;
+        padding:14px 16px;
+        border-radius:12px;
+        margin-bottom:14px;
+        font-size:15px;
+        line-height:1.4;
+    ">
+    <b>ℹ️ Como usar</b><br>
+    Os campos <b>Produto A</b> e <b>Produto B</b> representam <b>quaisquer dois produtos que você queira comparar</b>.<br>
+    Os valores que aparecem inicialmente são <b>apenas exemplos</b> — substitua pelos preços, volumes, quantidades ou metragem dos produtos reais que você está avaliando.
+    </div>
+    """, unsafe_allow_html=True)
+
     sub = st.segmented_control(
         "Tipo de produto",
         options=["📦 Pacotes & Unidades", "🧴 Líquidos & Cremes", "🧻 Papéis & Rolos"],
