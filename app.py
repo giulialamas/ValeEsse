@@ -3,15 +3,8 @@ import streamlit as st
 st.set_page_config(page_title="Vale Esse", page_icon="💸", layout="centered")
 
 st.markdown("""
-<script>
-const root = window.parent.document.documentElement;
-const theme = root.getAttribute("data-theme");
-document.body.setAttribute("data-theme", theme || "light");
-</script>
-""", unsafe_allow_html=True)
-
-st.markdown("""
 <style>
+/* Base (light) */
 .vale-box{
   background: rgba(0,0,0,0.04);
   color: #1f2328;
@@ -23,14 +16,20 @@ st.markdown("""
   line-height: 1.45;
 }
 
-/* Dark real */
+/* Dark: mais claro e legível */
 body[data-theme="dark"] .vale-box{
-  background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.92);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.12);            /* ↑ era 0.06 */
+  color: rgba(255,255,255,0.96);                  /* ↑ mais forte */
+  border: 1px solid rgba(255,255,255,0.18);       /* ↑ borda mais visível */
+}
+
+/* deixa o <b> ainda mais legível no dark */
+body[data-theme="dark"] .vale-box b{
+  color: rgba(255,255,255,0.98);
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 st.title("💸 Vale Esse")
 st.caption("Compare o que realmente rende mais pelo custo real.")
