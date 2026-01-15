@@ -24,7 +24,7 @@ st.markdown(f"""
 ">
 <b>💡 Sobre o Vale Esse</b><br>
 O Vale Esse compara produtos e combustíveis para mostrar <b>qual opção rende mais</b> no dia a dia.<br>
-Os valores iniciais são <b>exemplos</b> — substitua pelos dados reais.
+Compare produtos de tamanhos diferentes, embalagens diferentes ou combustíveis com consumos diferentes e veja o custo real por uso antes de comprar.
 </div>
 """, unsafe_allow_html=True)
 
