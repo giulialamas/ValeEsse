@@ -2,42 +2,31 @@ import streamlit as st
     
 st.set_page_config(page_title="Vale Esse", page_icon="💸", layout="centered")
 
-def vale_box(title: str, body_html: str, icon: str = "ℹ️"):
-    is_dark = st.get_option("theme.base") == "dark"
-
-    # Tom “vidro” único (igual à Sobre o Vale Esse)
-    bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
-    bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
-    fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
-
-    st.markdown(f"""
-    <div style="
-        background:{bg};
-        border:1px solid {bd};
-        color:{fg};
-        padding:14px 16px;
-        border-radius:14px;
-        margin:10px 0 14px 0;
-        font-size:15px;
-        line-height:1.45;
-    ">
-      <b>{icon} {title}</b><br>
-      {body_html}
-    </div>
-    """, unsafe_allow_html=True)
-
-
 st.title("💸 Vale Esse")
 st.caption("Compare o que realmente rende mais pelo custo real.")
-vale_box(
-    "Sobre o Vale Esse",
-    """
-    O <b>Vale Esse</b> compara produtos e combustíveis para mostrar <b>qual opção rende mais</b> no dia a dia.<br><br>
-    Os valores iniciais são <b>exemplos</b> — substitua pelos dados reais.
-    """,
-    icon="💡"
-)
 
+is_dark = st.get_option("theme.base") == "dark"
+bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
+bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
+fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
+
+st.markdown(f"""
+<div style="
+    background:{bg};
+    border:1px solid {bd};
+    color:{fg};
+    padding:14px 16px;
+    border-radius:14px;
+    margin:10px 0 14px 0;
+    font-size:15px;
+    line-height:1.45;
+">
+<b>💡 Sobre o Vale Esse</b><br>
+O Vale Esse compara produtos e combustíveis para mostrar <b>qual opção realmente rende mais</b> no dia a dia.<br><br>
+Você informa os dados dos itens que quer comparar e o app calcula o <b>custo real por uso</b> (por km, por volume, por unidade ou por metro).<br>
+Os valores que aparecem inicialmente são apenas <b>exemplos</b> — substitua pelos dados reais.
+</div>
+""", unsafe_allow_html=True)
 
 
 # =========================
@@ -55,14 +44,22 @@ pagina = st.segmented_control(
 if pagina == "⛽ Combustível":
     st.subheader("⛽ Etanol vs Gasolina")
     
-    vale_box(
-        "Como usar",
-        """
-        Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
-        Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais do seu carro ou do posto.
-        """,
-        icon="⛽"
-    )
+    st.markdown(f"""
+    <div style="
+        background:{bg};
+        border:1px solid {bd};
+        color:{fg};
+        padding:14px 16px;
+        border-radius:14px;
+        margin:10px 0 14px 0;
+        font-size:15px;
+        line-height:1.45;
+    ">
+    <b>ℹ️ Como usar</b><br>
+    Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
+    Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais do seu carro ou do posto.
+    </div>
+    """, unsafe_allow_html=True)
     
     # Consumos (podem ser atualizados pelo consumo medido abaixo)
     consumo_real = st.session_state.get("consumo_real")
