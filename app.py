@@ -21,14 +21,16 @@ if pagina == "⛽ Combustível":
     st.subheader("⛽ Etanol vs Gasolina")
     
     is_dark = st.get_option("theme.base") == "dark"
-    bg = "#2A2A2A" if is_dark else "#F3F4F6"
-    bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.08)"
+    
+    bg = "#2B2B2B" if is_dark else "#F3F4F6"   # fundo suave
+    fg = "#EAEAEA" if is_dark else "#2B2B2B"   # texto legível
+    bd = "#3A3A3A" if is_dark else "#DADDE1"   # borda suave
     
     st.markdown(f"""
     <div style="
-        background:{bg};
+        background-color:{bg};
+        color:{fg};
         border:1px solid {bd};
-        color: inherit;
         padding:14px 16px;
         border-radius:12px;
         margin-bottom:14px;
@@ -110,14 +112,16 @@ else:
     st.subheader("🛒 Produtos")
 
     is_dark = st.get_option("theme.base") == "dark"
-    bg = "#2A2A2A" if is_dark else "#F3F4F6"
-    bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.08)"
+    
+    bg = "#2B2B2B" if is_dark else "#F3F4F6"   # fundo suave
+    fg = "#EAEAEA" if is_dark else "#2B2B2B"   # texto legível
+    bd = "#3A3A3A" if is_dark else "#DADDE1"   # borda suave
     
     st.markdown(f"""
     <div style="
-        background:{bg};
+        background-color:{bg};
+        color:{fg};
         border:1px solid {bd};
-        color: inherit;
         padding:14px 16px;
         border-radius:12px;
         margin-bottom:14px;
