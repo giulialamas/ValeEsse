@@ -23,8 +23,12 @@ st.markdown(f"""
     line-height:1.45;
 ">
 <b>💡 Sobre o Vale Esse</b><br>
-O Vale Esse compara produtos e combustíveis para mostrar <b>qual opção rende mais</b> no dia a dia.<br>
-Compare produtos e combustíveis de tamanhos ou consumos diferentes e descubra, de forma simples, qual opção realmente rende mais no seu dia a dia.
+<div style="margin-top:8px;">
+O <b>Vale Esse</b> compara produtos e combustíveis para mostrar <b>qual opção rende mais</b> no dia a dia.<br>
+</div>
+<div style="margin-top:8px;">
+Compare <b>produtos</b> e <b>combustíveis</b> de tamanhos ou consumos diferentes e descubra, de forma simples, qual opção realmente rende mais no seu dia a dia.
+</div>
 </div>
 """, unsafe_allow_html=True)
 
