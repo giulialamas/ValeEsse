@@ -19,7 +19,30 @@ pagina = st.segmented_control(
 # ======================================================
 if pagina == "⛽ Combustível":
     st.subheader("⛽ Etanol vs Gasolina")
-
+    
+    is_dark = st.get_option("theme.base") == "dark"
+    
+    bg = "#1f1f1f" if is_dark else "#F7F7F7"
+    fg = "#f1f1f1" if is_dark else "#111111"
+    bd = "#333333" if is_dark else "#E0E0E0"
+    
+    st.markdown(f"""
+    <div style="
+        background-color:{bg};
+        color:{fg};
+        border:1px solid {bd};
+        padding:14px 16px;
+        border-radius:12px;
+        margin-bottom:14px;
+        font-size:15px;
+        line-height:1.4;
+    ">
+    <b>ℹ️ Como usar</b><br>
+    Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
+    Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais do seu carro ou do posto onde você abastece.
+    </div>
+    """, unsafe_allow_html=True)
+    
     # Consumos (podem ser atualizados pelo consumo medido abaixo)
     consumo_real = st.session_state.get("consumo_real")
     comb_real = st.session_state.get("comb_real")
