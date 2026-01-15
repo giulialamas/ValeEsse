@@ -2,10 +2,25 @@ import streamlit as st
     
 st.set_page_config(page_title="Vale Esse", page_icon="💸", layout="centered")
 
-is_dark = st.get_option("theme.base") == "dark"
+st.markdown("""
+<script>
+const root = window.parent.document.documentElement;
+const theme = root.getAttribute("data-theme") || "light";
+window.localStorage.setItem("vale-theme", theme);
+</script>
+""", unsafe_allow_html=True)
+
+theme = st.session_state.get("vale_theme")
+
+if theme is None:
+    theme = st.experimental_get_query_params().get("theme", ["light"])[0]
+
+is_dark = (theme == "dark")
+
 bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
 bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
 fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
+
 
 st.title("💸 Vale Esse")
 st.caption("Compare o que realmente rende mais pelo custo real.")
