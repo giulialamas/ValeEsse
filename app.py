@@ -6,19 +6,19 @@ st.title("💸 Vale Esse")
 st.caption("Compare o que realmente rende mais pelo custo real.")
 
 is_dark = st.get_option("theme.base") == "dark"
-    
-bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
-bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
-fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
-    
+
+bg = "#2B2B2B" if is_dark else "#F3F4F6"   # fundo suave
+fg = "#EAEAEA" if is_dark else "#2B2B2B"   # texto legível
+bd = "#3A3A3A" if is_dark else "#DADDE1"   # borda suave
+
 st.markdown(f"""
 <div style="
-    background:{bg};
-    border:1px solid {bd};
+    background-color:{bg};
     color:{fg};
+    border:1px solid {bd};
     padding:14px 16px;
-    border-radius:14px;
-    margin:10px 0 14px 0;
+    border-radius:12px;
+    margin-bottom:14px;
     font-size:15px;
     line-height:1.45;
 ">
@@ -45,19 +45,19 @@ if pagina == "⛽ Combustível":
     st.subheader("⛽ Etanol vs Gasolina")
     
     is_dark = st.get_option("theme.base") == "dark"
-    
-    bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
-    bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
-    fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
+
+    bg = "#2B2B2B" if is_dark else "#F3F4F6"   # fundo suave
+    fg = "#EAEAEA" if is_dark else "#2B2B2B"   # texto legível
+    bd = "#3A3A3A" if is_dark else "#DADDE1"   # borda suave
     
     st.markdown(f"""
     <div style="
-        background:{bg};
-        border:1px solid {bd};
+        background-color:{bg};
         color:{fg};
+        border:1px solid {bd};
         padding:14px 16px;
-        border-radius:14px;
-        margin:10px 0 14px 0;
+        border-radius:12px;
+        margin-bottom:14px;
         font-size:15px;
         line-height:1.45;
     ">
@@ -137,19 +137,19 @@ else:
     st.subheader("🛒 Produtos")
 
     is_dark = st.get_option("theme.base") == "dark"
-    
-    bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
-    bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
-    fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
+
+    bg = "#2B2B2B" if is_dark else "#F3F4F6"   # fundo suave
+    fg = "#EAEAEA" if is_dark else "#2B2B2B"   # texto legível
+    bd = "#3A3A3A" if is_dark else "#DADDE1"   # borda suave
     
     st.markdown(f"""
     <div style="
-        background:{bg};
-        border:1px solid {bd};
+        background-color:{bg};
         color:{fg};
+        border:1px solid {bd};
         padding:14px 16px;
-        border-radius:14px;
-        margin:10px 0 14px 0;
+        border-radius:12px;
+        margin-bottom:14px;
         font-size:15px;
         line-height:1.45;
     ">
