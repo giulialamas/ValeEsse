@@ -10,7 +10,7 @@ st.caption("Compare o que realmente rende mais pelo custo real.")
 # =========================
 pagina = st.segmented_control(
     "Escolha",
-    options=["###⛽ Combustível", "###🛒 Produtos"],
+    options=["⛽ Combustível", "🛒 Produtos"],
     default="⛽ Combustível",
 )
 
