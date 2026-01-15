@@ -2,22 +2,6 @@ import streamlit as st
     
 st.set_page_config(page_title="Vale Esse", page_icon="💸", layout="centered")
 
-st.markdown("""
-<style>
-.vale-box {
-    background-color:#F3F4F6;
-    color:#2B2B2B;
-    border:1px solid #DADDE1;
-}
-[data-theme="dark"] .vale-box {
-    background-color:#242424;
-    color:#E6E6E6;
-    border:1px solid #3A3A3A;
-}
-</style>
-""", unsafe_allow_html=True)
-
-
 st.title("💸 Vale Esse")
 st.caption("Compare o que realmente rende mais pelo custo real.")
 
@@ -37,13 +21,14 @@ if pagina == "⛽ Combustível":
     st.subheader("⛽ Etanol vs Gasolina")
     
     is_dark = st.get_option("theme.base") == "dark"
+    bg = "#2A2A2A" if is_dark else "#F3F4F6"
+    bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.08)"
     
-    bg = "#242424" if is_dark else "#F3F4F6"
-    fg = "#E6E6E6" if is_dark else "#2B2B2B"
-    bd = "#3A3A3A" if is_dark else "#DADDE1"
-    
-    st.markdown("""
-    <div class="vale-box" style="
+    st.markdown(f"""
+    <div style="
+        background:{bg};
+        border:1px solid {bd};
+        color: inherit;
         padding:14px 16px;
         border-radius:12px;
         margin-bottom:14px;
@@ -125,13 +110,14 @@ else:
     st.subheader("🛒 Produtos")
 
     is_dark = st.get_option("theme.base") == "dark"
+    bg = "#2A2A2A" if is_dark else "#F3F4F6"
+    bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.08)"
     
-    bg = "#1f1f1f" if is_dark else "#F7F7F7"
-    fg = "#f1f1f1" if is_dark else "#111111"
-    bd = "#333333" if is_dark else "#E0E0E0"
-    
-    st.markdown("""
-    <div class="vale-box" style="
+    st.markdown(f"""
+    <div style="
+        background:{bg};
+        border:1px solid {bd};
+        color: inherit;
         padding:14px 16px;
         border-radius:12px;
         margin-bottom:14px;
