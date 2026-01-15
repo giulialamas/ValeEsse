@@ -66,7 +66,9 @@ if pagina == "⛽ Combustível":
     ">
     <b>ℹ️ Como usar</b><br>
     Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
+    </div>
     Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais do seu carro ou do posto onde você abastece.
+    </div>
     </div>
     """, unsafe_allow_html=True)
 
