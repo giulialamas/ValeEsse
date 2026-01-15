@@ -2,29 +2,15 @@ import streamlit as st
     
 st.set_page_config(page_title="Vale Esse", page_icon="💸", layout="centered")
 
-st.markdown("""
-<script>
-const root = window.parent.document.documentElement;
-const theme = root.getAttribute("data-theme") || "light";
-window.localStorage.setItem("vale-theme", theme);
-</script>
-""", unsafe_allow_html=True)
-
-theme = st.session_state.get("vale_theme")
-
-if theme is None:
-    theme = st.experimental_get_query_params().get("theme", ["light"])[0]
-
-is_dark = (theme == "dark")
-
-bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
-bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
-fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
-
-
 st.title("💸 Vale Esse")
 st.caption("Compare o que realmente rende mais pelo custo real.")
 
+is_dark = st.get_option("theme.base") == "dark"
+    
+bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
+bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
+fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
+    
 st.markdown(f"""
 <div style="
     background:{bg};
@@ -58,6 +44,12 @@ pagina = st.segmented_control(
 if pagina == "⛽ Combustível":
     st.subheader("⛽ Etanol vs Gasolina")
     
+    is_dark = st.get_option("theme.base") == "dark"
+    
+    bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
+    bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
+    fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
+    
     st.markdown(f"""
     <div style="
         background:{bg};
@@ -71,9 +63,10 @@ if pagina == "⛽ Combustível":
     ">
     <b>ℹ️ Como usar</b><br>
     Informe o <b>preço</b> e o <b>consumo médio</b> de cada combustível.<br>
-    Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais.
+    Os valores exibidos são <b>apenas exemplos</b> — substitua pelos dados reais do seu carro ou do posto onde você abastece.
     </div>
     """, unsafe_allow_html=True)
+
     
     # Consumos (podem ser atualizados pelo consumo medido abaixo)
     consumo_real = st.session_state.get("consumo_real")
@@ -143,6 +136,12 @@ if pagina == "⛽ Combustível":
 else:
     st.subheader("🛒 Produtos")
 
+    is_dark = st.get_option("theme.base") == "dark"
+    
+    bg = "rgba(255,255,255,0.06)" if is_dark else "rgba(0,0,0,0.04)"
+    bd = "rgba(255,255,255,0.10)" if is_dark else "rgba(0,0,0,0.10)"
+    fg = "rgba(255,255,255,0.92)" if is_dark else "#1f2328"
+    
     st.markdown(f"""
     <div style="
         background:{bg};
