@@ -97,7 +97,7 @@ else:
     # -----------------------------
     # SUBABA: PACOTES & UNIDADES
     # -----------------------------
-    elif sub == "📦 Pacotes & Unidades":
+    if sub == "📦 Pacotes & Unidades":
         st.caption("Compare por unidade.")
 
         col1, col2 = st.columns(2)
@@ -131,7 +131,7 @@ else:
     # -----------------------------
     # SUBABA: LÍQUIDOS & CREMES
     # -----------------------------
-    if sub == "🧴 Líquidos & Cremes":
+    elif sub == "🧴 Líquidos & Cremes":
         st.caption("Compare por volume (mL, L ou m³).")
 
         def to_ml(valor: float, unidade: str) -> float:
